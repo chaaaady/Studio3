@@ -2,70 +2,85 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
 } from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { PlusIcon } from "lucide-react";
+
+const faq = [
+  {
+    question: "What is your return policy?",
+    answer:
+      "You can return unused items in their original packaging within 30 days for a refund or exchange. Contact support for assistance.",
+  },
+  {
+    question: "How do I track my order?",
+    answer:
+      "Track your order using the link provided in your confirmation email, or log into your account to view tracking details.",
+  },
+  {
+    question: "Do you ship internationally?",
+    answer:
+      "Yes, we ship worldwide. Shipping fees and delivery times vary by location, and customs duties may apply for some countries.",
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer:
+      "We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay, ensuring secure payment options for all customers.",
+  },
+  {
+    question: "What if I receive a damaged item?",
+    answer:
+      "Please contact our support team within 48 hours of delivery with photos of the damaged item. We’ll arrange a replacement or refund.",
+  },
+  {
+    question: "How can I contact customer support?",
+    answer:
+      "You can reach our support team via email at support@example.com or through the live chat on our website. We're available 24/7 to assist you.",
+  },
+];
 
 const FAQ = () => {
-  const faqs = [
-    {
-      question: "Quelle est la capacité d'accueil des studios ?",
-      answer: "Le studio A peut accueillir jusqu'à 10 personnes, le studio B, 10 personnes et le C, 4 personnes."
-    },
-    {
-      question: "Le studio est-il fumeur ?",
-      answer: "Oui, un purificateur d'air est installé pour garantir une bonne ventilation de la pièce."
-    },
-    {
-      question: "Est ce que l'alcool est autorisé ?",
-      answer: "Non, la consomation d'alcool est formellement interdite dans le studio."
-    },
-    {
-      question: "Où se trouve le studio ?",
-      answer: "Le studio est idéalement situé au 50 Quai des Carrières, 94220 Charenton-le-Pont, juste en face de l'autoroute A4. Il se trouve à seulement 5 minutes du périphérique Porte de Bercy, à 4 minutes des quais de Seine, et à 8 minutes à pied de la station Charenton-Écoles."
-    },
-    {
-      question: "Peut-on réserver une session pour le jour même ?",
-      answer: "Non, nous ne pouvons accepter que des réservations effectuées au moins 24 heures à l'avance, en raison de contraintes logistiques."
-    },
-    {
-      question: "Comment réserver un studio ?",
-      answer: "Vous pouvez réserver en nous appelant au 07 56 81 22 55 ou en nous contactant par email à studioemara@gmail.com. Nous vous recommandons de réserver au moins 24h à l'avance."
-    },
-    {
-      question: "Quels sont vos horaires d'ouverture ?",
-      answer: "Nos studios sont ouverts du lundi au dimanche, de 14h à 4h du matin. Des créneaux spéciaux peuvent être organisés sur demande."
-    },
-    {
-      question: "Faut-il apporter son propre matériel ?",
-      answer: "Non, tous nos studios sont entièrement équipés avec du matériel professionnel. Cependant, vous pouvez apporter vos propres instruments si vous le souhaitez."
-    }
-  ];
-
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-screen-xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6">QUESTIONS FRÉQUENTES</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Retrouvez les réponses aux questions les plus courantes sur nos studios
-          </p>
-        </div>
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+    <div id="faq" className="w-full max-w-screen-xl mx-auto py-8 xs:py-16 px-6">
+      <h2 className="md:text-center text-3xl xs:text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tighter">
+        Frequently Asked Questions
+      </h2>
+      <p className="mt-1.5 md:text-center xs:text-lg text-muted-foreground">
+        Quick answers to common questions about our products and services.
+      </p>
+
+      <div className="min-h-[550px] md:min-h-[320px] xl:min-h-[300px]">
+        <Accordion
+          type="single"
+          collapsible
+          className="mt-8 space-y-4 md:columns-2 gap-4"
+        >
+          {faq.map(({ question, answer }, index) => (
+            <AccordionItem
+              key={question}
+              value={`question-${index}`}
+              className="bg-accent py-1 px-4 rounded-xl border-none !mt-0 !mb-4 break-inside-avoid"
+            >
+              <AccordionPrimitive.Header className="flex">
+                <AccordionPrimitive.Trigger
+                  className={cn(
+                    "flex flex-1 items-center justify-between py-4 font-semibold tracking-tight transition-all hover:underline [&[data-state=open]>svg]:rotate-45",
+                    "text-start text-lg"
+                  )}
+                >
+                  {question}
+                  <PlusIcon className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200" />
+                </AccordionPrimitive.Trigger>
+              </AccordionPrimitive.Header>
+              <AccordionContent className="text-[15px]">
+                {answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
-    </section>
+    </div>
   );
 };
 
