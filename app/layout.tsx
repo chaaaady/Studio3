@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { Navbar } from "@/components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -9,45 +10,45 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Beautiful Shadcn UI Landing Page",
+  title: "Studio EMARA - Studio d'enregistrement professionnel à Paris",
   description:
-    "A beautiful landing page built with Shadcn UI, Next.js 15, Tailwind CSS, and Shadcn UI Blocks.",
+    "Studio d'enregistrement professionnel à Paris 13e. Équipements de qualité et ingénieurs expérimentés pour tous vos projets musicaux.",
   keywords: [
-    "Shadcn UI Landing Page",
-    "Shadcn UI Blocks",
-    "Shadcn UI",
-    "Landing Page",
-    "Tailwind CSS Landing Page",
-    "Beautiful Shadcn UI Landing Page",
-    "Next.js 15 Landing Page",
-    "Simple Landing Page",
-    "Landing Page Template",
-    "Landing Page Design",
+    "Studio d'enregistrement",
+    "Studio Paris",
+    "Enregistrement professionnel",
+    "Ingénieur du son",
+    "Studio musique",
+    "Studio EMARA",
+    "Paris 13e",
+    "Enregistrement studio",
+    "Mixage mastering",
+    "Podcast studio",
   ],
   openGraph: {
     type: "website",
-    siteName: "Shadcn Landing Page",
-    locale: "en_US",
-    url: "https://shadcn-landing-page.vercel.app",
-    title: "Shadcn Landing Page",
+    siteName: "Studio EMARA",
+    locale: "fr_FR",
+    url: "https://studioemara.fr",
+    title: "Studio EMARA - Studio d'enregistrement professionnel à Paris",
     description:
-      "A beautiful landing page built with Shadcn UI, Next.js 15, Tailwind CSS, and Shadcn UI Blocks.",
+      "Studio d'enregistrement professionnel à Paris 13e. Équipements de qualité et ingénieurs expérimentés pour tous vos projets musicaux.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Shadcn UI Landing Page Preview",
+        alt: "Studio EMARA - Studio d'enregistrement professionnel",
       },
     ],
   },
   authors: [
     {
-      name: "Akash Moradiya",
-      url: "https://shadcnui-blocks.com",
+      name: "Studio EMARA",
+      url: "https://studioemara.fr",
     },
   ],
-  creator: "Akash Moradiya",
+  creator: "Studio EMARA",
   icons: [
     {
       rel: "icon",
@@ -95,9 +96,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>

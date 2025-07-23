@@ -1,21 +1,23 @@
-import FAQ from "@/components/faq";
-import Features from "@/components/features";
-import Footer from "@/components/footer";
 import Hero from "@/components/hero";
-import { Navbar } from "@/components/navbar";
+import About from "@/components/about";
+import Services from "@/components/services";
 import Pricing from "@/components/pricing";
+import AdditionalServices from "@/components/additional-services";
+import FAQ from "@/components/faq";
 import Testimonial from "@/components/testimonial";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
+    <main className="min-h-screen">
       <Hero />
-      <Features />
-      <FAQ />
-      <Testimonial />
+      <About />
+      <Services />
       <Pricing />
+      <AdditionalServices />
+      <Testimonial />
+      <FAQ />
       <Footer />
-    </>
+    </main>
   );
 }

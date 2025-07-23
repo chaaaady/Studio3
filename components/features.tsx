@@ -11,39 +11,39 @@ import {
 const features = [
   {
     icon: Goal,
-    title: "Identify Opportunities",
+    title: "Équipements Professionnels",
     description:
-      "Easily uncover untapped areas to explore and expand your reach effortlessly.",
+      "Nos studios sont équipés du matériel le plus performant pour garantir une qualité d'enregistrement optimale.",
   },
   {
     icon: BookCheck,
-    title: "Build Authority",
+    title: "Ingénieurs Expérimentés",
     description:
-      "Create valuable content that resonates, inspires trust, and positions you as an expert.",
+      "Notre équipe d'ingénieurs du son qualifiés vous accompagne pour obtenir le meilleur rendu sonore.",
   },
   {
     icon: ChartPie,
-    title: "Instant Insights",
+    title: "Qualité Premium",
     description:
-      "Gain immediate, actionable insights with a quick glance, enabling fast decision-making.",
+      "Nous garantissons une qualité d'enregistrement professionnelle pour tous vos projets musicaux.",
   },
   {
     icon: Users,
-    title: "Engage with Your Audience",
+    title: "Accompagnement Personnalisé",
     description:
-      "Boost audience engagement with interactive features like polls, quizzes, and forms.",
+      "Un suivi personnalisé de votre projet, de la prise de son jusqu'au mixage final.",
   },
   {
     icon: FolderSync,
-    title: "Automate Your Workflow",
+    title: "Flexibilité des Créneaux",
     description:
-      "Streamline your processes by automating repetitive tasks, saving time and reducing effort.",
+      "Des créneaux disponibles adaptés à vos besoins, avec une réservation simple et rapide.",
   },
   {
     icon: Zap,
-    title: "Accelerate Growth",
+    title: "Résultats Rapides",
     description:
-      "Supercharge your growth by implementing strategies that drive results quickly and efficiently.",
+      "Un workflow optimisé pour vous permettre de repartir avec votre projet finalisé rapidement.",
   },
 ];
 
@@ -54,7 +54,7 @@ const Features = () => {
       className="max-w-screen-xl mx-auto w-full py-12 xs:py-20 px-6"
     >
       <h2 className="text-3xl xs:text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight sm:max-w-xl sm:text-center sm:mx-auto">
-        Boost Your Strategy with Smart Features
+        Pourquoi choisir nos studios ?
       </h2>
       <div className="mt-8 xs:mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
         {features.map((feature) => (

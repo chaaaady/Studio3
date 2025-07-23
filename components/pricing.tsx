@@ -1,104 +1,160 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
-import { CircleCheck } from "lucide-react";
-
-const plans = [
-  {
-    name: "Starter",
-    price: 19,
-    description:
-      "Get 20 AI-generated portraits with 2 unique styles and filters.",
-    features: [
-      "5 hours turnaround time",
-      "20 AI portraits",
-      "Choice of 2 styles",
-      "Choice of 2 filters",
-      "2 retouch credits",
-    ],
-    buttonText: "Get 20 portraits in 5 hours",
-  },
-  {
-    name: "Advanced",
-    price: 29,
-    isRecommended: true,
-    description:
-      "Get 50 AI-generated portraits with 5 unique styles and filters.",
-    features: [
-      "3 hours turnaround time",
-      "50 AI portraits",
-      "Choice of 5 styles",
-      "Choice of 5 filters",
-      "5 retouch credits",
-    ],
-    buttonText: "Get 50 portraits in 3 hours",
-    isPopular: true,
-  },
-  {
-    name: "Premium",
-    price: 49,
-    description:
-      "Get 100 AI-generated portraits with 10 unique styles and filters.",
-    features: [
-      "1-hour turnaround time",
-      "100 AI portraits",
-      "Choice of 10 styles",
-      "Choice of 10 filters",
-      "10 retouch credits",
-    ],
-    buttonText: "Get 100 portraits in 1 hour",
-  },
-];
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, Users, Square, Music } from "lucide-react";
 
 const Pricing = () => {
+  const studios = [
+    {
+      name: "STUDIO A",
+      price: "40€",
+      period: "/heure",
+      description: "Studio professionnel de 40 m² pour vos enregistrements premium",
+      features: [
+        "Enregistrement avec ingénieur du son",
+        "Accès complet aux équipements pro",
+        "Direction artistique incluse",
+        "Pré-mix de qualité studio"
+      ],
+      capacity: "10 personnes",
+      size: "40 m²",
+      minimum: "2h minimum",
+      popular: false
+    },
+    {
+      name: "STUDIO B",
+      price: "40€",
+      period: "/heure",
+      description: "Studio spacieux et équipé pour tous vos projets musicaux",
+      features: [
+        "Enregistrement professionnel complet",
+        "Équipements de dernière génération",
+        "Ingénieur du son expérimenté",
+        "Pré-mix inclus dans le service"
+      ],
+      capacity: "10 personnes",
+      size: "40 m²",
+      minimum: "2h minimum",
+      popular: true
+    },
+    {
+      name: "STUDIO C",
+      price: "35€",
+      period: "/heure",
+      description: "Studio compact et professionnel pour projets intimistes",
+      features: [
+        "Enregistrement haute qualité",
+        "Setup professionnel complet",
+        "Accompagnement personnalisé",
+        "Pré-mix inclus"
+      ],
+      capacity: "4 personnes",
+      size: "25 m²",
+      minimum: "2h minimum",
+      popular: false
+    },
+    {
+      name: "STUDIO D",
+      price: "20€",
+      period: "/heure",
+      description: "Studio beatmaking dédié à la création musicale",
+      features: [
+        "Setup beatmaking professionnel",
+        "Bibliothèque de samples premium",
+        "Instruments virtuels inclus",
+        "Enregistrement voix disponible"
+      ],
+      capacity: "2 personnes",
+      size: "15 m²",
+      minimum: "5h minimum",
+      popular: false
+    }
+  ];
+
   return (
-    <div id="pricing" className="max-w-screen-lg mx-auto py-12 xs:py-20 px-6">
-      <h1 className="text-4xl xs:text-5xl font-bold text-center tracking-tight">
-        Pricing
-      </h1>
-      <div className="mt-8 xs:mt-14 grid grid-cols-1 lg:grid-cols-3 items-center gap-8 lg:gap-0">
-        {plans.map((plan) => (
-          <div
-            key={plan.name}
-            className={cn(
-              "relative bg-accent/50 border p-7 rounded-xl lg:rounded-none lg:first:rounded-l-xl lg:last:rounded-r-xl",
-              {
-                "bg-background border-[2px] border-primary py-12 !rounded-xl":
-                  plan.isPopular,
-              }
-            )}
-          >
-            {plan.isPopular && (
-              <Badge className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2">
-                Most Popular
-              </Badge>
-            )}
-            <h3 className="text-lg font-medium">{plan.name}</h3>
-            <p className="mt-2 text-4xl font-bold">${plan.price}</p>
-            <p className="mt-4 font-medium text-muted-foreground">
-              {plan.description}
+    <section id="pricing" className="section-openai">
+      <div className="container-openai">
+        <div className="text-center space-y-16">
+          <div className="space-y-6">
+            <h2 className="text-foreground">NOS STUDIOS</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Choisissez le studio qui correspond parfaitement à vos besoins et à votre budget
             </p>
-            <Separator className="my-6" />
-            <ul className="space-y-2">
-              {plan.features.map((feature) => (
-                <li key={feature} className="flex items-start gap-2">
-                  <CircleCheck className="h-4 w-4 mt-1 text-green-600" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Button
-              variant={plan.isPopular ? "default" : "outline"}
-              size="lg"
-              className="w-full mt-6 rounded-full"
-            >
-              {plan.buttonText}
-            </Button>
           </div>
-        ))}
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {studios.map((studio, index) => (
+              <div 
+                key={index} 
+                className={`relative card-openai ${studio.popular ? 'ring-2 ring-primary/20 border-primary/30' : ''} hover:-translate-y-1`}
+              >
+                {studio.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-primary text-primary-foreground border-0 px-4 py-1">
+                      POPULAIRE
+                    </Badge>
+                  </div>
+                )}
+                
+                <div className="space-y-6">
+                  <div className="text-center space-y-2">
+                    <h3 className="text-2xl font-bold text-foreground">{studio.name}</h3>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-4xl font-bold text-primary">{studio.price}</span>
+                      <span className="text-muted-foreground">{studio.period}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{studio.description}</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="space-y-1">
+                      <Users className="w-5 h-5 mx-auto text-primary" />
+                      <p className="text-xs text-muted-foreground">{studio.capacity}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <Square className="w-5 h-5 mx-auto text-primary" />
+                      <p className="text-xs text-muted-foreground">{studio.size}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <Music className="w-5 h-5 mx-auto text-primary" />
+                      <p className="text-xs text-muted-foreground">{studio.minimum}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {studio.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <Button 
+                    className={`w-full ${studio.popular ? 'btn-openai-primary' : 'btn-openai-secondary'}`}
+                    asChild
+                  >
+                    <a href="tel:+33756812255">
+                      Réserver {studio.name}
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-8">
+            <div className="text-center space-y-4">
+              <h3 className="text-2xl font-semibold text-foreground">Offre spéciale été</h3>
+              <p className="text-lg text-muted-foreground">
+                <span className="text-primary font-bold">30€/h</span> pour toute réservation de plus de 4 heures
+              </p>
+              <p className="text-sm text-muted-foreground italic">*Valable jusqu'au 31 août</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
